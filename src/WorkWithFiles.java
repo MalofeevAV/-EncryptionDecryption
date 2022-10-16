@@ -6,8 +6,13 @@ import java.nio.file.Paths;
 
 
 public class WorkWithFiles {
-    public static String intupFromTheFile(String fileName) throws IOException {
-        return  new String(Files.readAllBytes(Paths.get(fileName)));
+    public static String intupFromTheFile(String fileName) {
+        try {
+            return new String(Files.readAllBytes(Paths.get(fileName)));
+        } catch (Exception e) {
+            System.out.println("File does not exist");
+            return "";
+        }
     }
 
     public static void outputToTheFile(String data, String pathToTheFile) {
@@ -19,5 +24,4 @@ public class WorkWithFiles {
             System.out.printf("An Error occurred: %s", e.getMessage());
         }
     }
-
 }
